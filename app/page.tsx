@@ -260,6 +260,46 @@ export default function Home() {
         </div>
       </section>
 
+      {/* AI Resume Analyzer Section */}
+      <section className="py-16 px-4 bg-gradient-to-r from-green-600 to-teal-600">
+        <div className="max-w-5xl mx-auto text-center">
+          <h2 className="text-4xl font-bold mb-4 text-white">
+            🤖 AI Resume Analyzer - FREE
+          </h2>
+          <p className="text-green-100 mb-8 max-w-3xl mx-auto text-lg">
+            Want to analyze your resume according to job description? Get interview questions? Rewrite your resume according to job description? Write cover letter for free?
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
+              <div className="text-3xl mb-3">📊</div>
+              <h3 className="font-semibold text-white mb-2">Resume Analysis</h3>
+              <p className="text-green-100 text-sm">Analyze your resume against specific job descriptions</p>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
+              <div className="text-3xl mb-3">❓</div>
+              <h3 className="font-semibold text-white mb-2">Interview Questions</h3>
+              <p className="text-green-100 text-sm">Get tailored interview questions for your role</p>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
+              <div className="text-3xl mb-3">✍️</div>
+              <h3 className="font-semibold text-white mb-2">Resume Rewrite</h3>
+              <p className="text-green-100 text-sm">AI-powered resume improvements and optimization</p>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
+              <div className="text-3xl mb-3">💌</div>
+              <h3 className="font-semibold text-white mb-2">Cover Letters</h3>
+              <p className="text-green-100 text-sm">Generate perfect cover letters for any job</p>
+            </div>
+          </div>
+          <a href="https://resume-analyzer-ali.streamlit.app/" target="_blank" rel="noopener noreferrer">
+            <Button size="lg" className="px-10 py-4 bg-white text-green-600 hover:bg-gray-100 font-bold shadow-lg text-lg">
+              🚀 Try AI Analyzer - FREE
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </a>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-16 px-4 bg-gradient-to-r from-blue-600 to-purple-600">
         <div className="max-w-4xl mx-auto text-center">
