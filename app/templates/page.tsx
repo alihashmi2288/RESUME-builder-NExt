@@ -13,6 +13,7 @@ import { ElegantTemplate } from '@/components/templates/elegant-template'
 import { ProfessionalTemplate } from '@/components/templates/professional-template'
 import { CompactTemplate } from '@/components/templates/compact-template'
 import { ResumeData, ResumeSettings } from '@/types/resume'
+import { emptyResumeData } from '@/lib/demo-data'
 import Link from 'next/link'
 
 const sampleData: ResumeData = {
@@ -280,20 +281,7 @@ export default function TemplatesPage() {
                           id: Date.now().toString(),
                           title: `My ${template.name} Resume`,
                           template: template.id,
-                          data: {
-                            ...sampleData,
-                            personalInfo: {
-                              ...sampleData.personalInfo,
-                              fullName: '',
-                              email: '',
-                              phone: '',
-                              summary: ''
-                            },
-                            experience: [],
-                            education: [],
-                            skills: [],
-                            projects: []
-                          },
+                          data: emptyResumeData,
                           settings: { ...sampleSettings, template: template.id },
                           updatedAt: new Date().toISOString()
                         }
@@ -326,7 +314,7 @@ export default function TemplatesPage() {
                 id: Date.now().toString(),
                 title: 'My Resume',
                 template: 'modern',
-                data: sampleData,
+                data: emptyResumeData,
                 settings: sampleSettings,
                 updatedAt: new Date().toISOString()
               }

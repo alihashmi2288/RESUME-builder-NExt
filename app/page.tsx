@@ -83,7 +83,7 @@ export default function Home() {
                 </Button>
               </Link>
               <Link href="/templates">
-                <Button variant="outline" size="lg" className="px-8 py-3 border-2 border-purple-600 hover:bg-purple-600 hover:!text-white" style={{ color: '#581c87' }}>
+                <Button variant="outline" size="lg" className="px-8 py-3 border-2 border-purple-600 dark:border-purple-400 hover:bg-purple-600 dark:hover:bg-purple-600 hover:!text-white text-purple-900 dark:text-purple-100 bg-white dark:bg-gray-800">
                   View Templates
                 </Button>
               </Link>
@@ -317,7 +317,7 @@ export default function Home() {
               </Button>
             </Link>
             <Link href="/templates">
-              <Button variant="outline" size="lg" className="px-8 py-3 border-2 border-white hover:bg-white hover:text-blue-600" style={{ color: '#374151' }}>
+              <Button variant="outline" size="lg" className="px-8 py-3 border-2 border-white dark:border-gray-300 hover:bg-white dark:hover:bg-gray-100 hover:text-blue-600 dark:hover:text-blue-600 text-white dark:text-gray-200 bg-transparent dark:bg-transparent">
                 Explore Templates
               </Button>
             </Link>

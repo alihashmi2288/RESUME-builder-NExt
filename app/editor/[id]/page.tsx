@@ -13,26 +13,9 @@ import ResumeSettingsComponent from '@/components/ResumeSettings'
 import { FileText, Eye, Settings, Save, ArrowLeft } from 'lucide-react'
 import { toast } from 'react-hot-toast'
 import Link from 'next/link'
+import { demoResumeData, emptyResumeData } from '@/lib/demo-data'
 
-const initialResumeData: ResumeData = {
-  personalInfo: {
-    fullName: '',
-    email: '',
-    phone: '',
-    location: '',
-    website: '',
-    linkedin: '',
-    github: '',
-    summary: '',
-    title: ''
-  },
-  experience: [],
-  education: [],
-  skills: [],
-  projects: [],
-  certifications: [],
-  languages: []
-}
+
 
 const initialSettings: ResumeSettings = {
   template: 'modern',
@@ -52,11 +35,12 @@ const initialSettings: ResumeSettings = {
 
 export default function EditorPage({ params }: { params: { id: string } }) {
   const router = useRouter()
-  const [resumeData, setResumeData] = useState<ResumeData>(initialResumeData)
+  const [resumeData, setResumeData] = useState<ResumeData>(emptyResumeData)
   const [settings, setSettings] = useState<ResumeSettings>(initialSettings)
   const [activeView, setActiveView] = useState<'form' | 'preview' | 'settings'>('form')
   const [isLoading, setIsLoading] = useState(true)
   const [resumeTitle, setResumeTitle] = useState('Untitled Resume')
+  const [isNewResume, setIsNewResume] = useState(false)
 
   useEffect(() => {
     // Load resume from localStorage
@@ -68,11 +52,22 @@ export default function EditorPage({ params }: { params: { id: string } }) {
         setResumeTitle(currentResume.title)
         if (currentResume.data) {
           setResumeData(currentResume.data)
+          setIsNewResume(false)
+        } else {
+          // New resume - keep form data empty but show demo in preview
+          setResumeData(emptyResumeData)
+          setIsNewResume(true)
         }
         if (currentResume.settings) {
           setSettings(currentResume.settings)
         }
+      } else {
+        // Resume not found - treat as new
+        setIsNewResume(true)
       }
+    } else {
+      // No saved resumes - treat as new
+      setIsNewResume(true)
     }
     setIsLoading(false)
   }, [params.id])
@@ -126,13 +121,13 @@ export default function EditorPage({ params }: { params: { id: string } }) {
                 type="text"
                 value={resumeTitle}
                 onChange={(e) => setResumeTitle(e.target.value)}
-                className="text-xl font-semibold bg-transparent border-none focus:outline-none focus:ring-2 focus:ring-primary rounded px-2 py-1"
+                className="text-xl font-semibold bg-transparent text-gray-900 dark:text-gray-100 border-none focus:outline-none focus:ring-2 focus:ring-primary rounded px-2 py-1"
                 onBlur={saveResume}
               />
             </div>
             
             <div className="flex items-center space-x-4">
-              <Button variant="outline" size="sm" onClick={saveResume} className="!text-purple-900 dark:!text-purple-900 border-gray-300 dark:border-gray-600">
+              <Button variant="outline" size="sm" onClick={saveResume} className="!text-purple-900 dark:!text-purple-100 border-purple-300 dark:border-purple-500 bg-white dark:bg-purple-900/20 hover:bg-purple-50 dark:hover:bg-purple-800/30">
                 <Save className="h-4 w-4 mr-2" />
                 Save
               </Button>
@@ -207,7 +202,7 @@ export default function EditorPage({ params }: { params: { id: string } }) {
             <Card className="shadow-xl border-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm">
               <div className="p-6">
                 <ResumePreview
-                  resumeData={resumeData}
+                  resumeData={isNewResume && Object.values(resumeData.personalInfo).every(v => !v) && resumeData.experience.length === 0 ? demoResumeData : resumeData}
                   settings={settings}
                 />
               </div>

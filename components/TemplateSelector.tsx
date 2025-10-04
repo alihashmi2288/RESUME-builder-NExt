@@ -23,27 +23,27 @@ const templates = [
 export default function TemplateSelector({ selectedTemplate, onTemplateChange }: TemplateSelectorProps) {
   return (
     <div className="mb-6">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">Choose Template</h3>
+      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Choose Template</h3>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {templates.map((template) => (
           <Card 
             key={template.id}
             className={`cursor-pointer transition-all hover:shadow-md ${
               selectedTemplate === template.id 
-                ? 'ring-2 ring-blue-500 bg-blue-50' 
-                : 'hover:bg-gray-50'
+                ? 'ring-2 ring-blue-500 bg-blue-50 dark:bg-blue-900/30' 
+                : 'hover:bg-gray-50 dark:hover:bg-gray-700/50'
             }`}
             onClick={() => onTemplateChange(template.id)}
           >
             <CardContent className="p-4">
               <div className="flex items-center justify-between mb-2">
-                <h4 className="font-medium text-gray-900">{template.name}</h4>
+                <h4 className="font-medium text-gray-900 dark:text-white">{template.name}</h4>
                 {selectedTemplate === template.id && (
                   <Check className="h-5 w-5 text-blue-600" />
                 )}
               </div>
-              <p className="text-sm text-gray-600">{template.description}</p>
-              <div className="mt-3 h-20 bg-white border rounded overflow-hidden relative group shadow-sm cursor-pointer" onClick={() => window.location.href = `/preview/${template.id}`}>
+              <p className="text-sm text-gray-600 dark:text-gray-300">{template.description}</p>
+              <div className="mt-3 h-20 bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded overflow-hidden relative group shadow-sm cursor-pointer" onClick={() => window.location.href = `/preview/${template.id}`}>
                 {template.id === 'modern' && (
                   <div className="w-full h-full bg-white">
                     <div className="h-3 bg-blue-500 border-b-2 border-blue-600"></div>

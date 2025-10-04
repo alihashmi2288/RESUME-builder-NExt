@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Plus, FileText, Calendar, Crown, Zap, Edit, Trash2, ArrowLeft } from 'lucide-react'
+import { Plus, FileText, Calendar, Crown, Zap, Edit, Trash2, ArrowLeft, User, Briefcase, GraduationCap, Code, FolderOpen } from 'lucide-react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 
@@ -130,6 +130,67 @@ export default function DashboardPage() {
           </Card>
         </div>
 
+        {/* Resume Sections Navigation */}
+        <div className="mb-12">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Resume Sections</h2>
+            <Button variant="ghost" size="sm" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
+              Quick Guide
+            </Button>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-8">
+            <div className="rounded-lg border shadow-sm bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/50 dark:to-blue-800/50 border-blue-200 dark:border-blue-500 hover:shadow-lg transition-all duration-300 cursor-pointer hover:scale-105">
+              <div className="p-6 text-center">
+                <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-blue-500 flex items-center justify-center">
+                  <User className="h-6 w-6 text-white" />
+                </div>
+                <h3 className="font-semibold text-blue-900 dark:text-blue-100 mb-2">Personal Info</h3>
+                <p className="text-sm text-blue-600 dark:text-blue-300">Contact details & summary</p>
+              </div>
+            </div>
+            
+            <div className="rounded-lg border shadow-sm bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/50 dark:to-green-800/50 border-green-200 dark:border-green-500 hover:shadow-lg transition-all duration-300 cursor-pointer hover:scale-105">
+              <div className="p-6 text-center">
+                <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-green-500 flex items-center justify-center">
+                  <Briefcase className="h-6 w-6 text-white" />
+                </div>
+                <h3 className="font-semibold text-green-900 dark:text-green-100 mb-2">Experience</h3>
+                <p className="text-sm text-green-600 dark:text-green-300">Work history & achievements</p>
+              </div>
+            </div>
+            
+            <div className="rounded-lg border shadow-sm bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/50 dark:to-purple-800/50 border-purple-200 dark:border-purple-500 hover:shadow-lg transition-all duration-300 cursor-pointer hover:scale-105">
+              <div className="p-6 text-center">
+                <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-purple-500 flex items-center justify-center">
+                  <GraduationCap className="h-6 w-6 text-white" />
+                </div>
+                <h3 className="font-semibold text-purple-900 dark:text-purple-100 mb-2">Education</h3>
+                <p className="text-sm text-purple-600 dark:text-purple-300">Academic background</p>
+              </div>
+            </div>
+            
+            <div className="rounded-lg border shadow-sm bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900/50 dark:to-orange-800/50 border-orange-200 dark:border-orange-500 hover:shadow-lg transition-all duration-300 cursor-pointer hover:scale-105">
+              <div className="p-6 text-center">
+                <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-orange-500 flex items-center justify-center">
+                  <Code className="h-6 w-6 text-white" />
+                </div>
+                <h3 className="font-semibold text-orange-900 dark:text-orange-100 mb-2">Skills</h3>
+                <p className="text-sm text-orange-600 dark:text-orange-300">Technical & soft skills</p>
+              </div>
+            </div>
+            
+            <div className="rounded-lg border shadow-sm bg-gradient-to-br from-pink-50 to-pink-100 dark:from-pink-900/50 dark:to-pink-800/50 border-pink-200 dark:border-pink-500 hover:shadow-lg transition-all duration-300 cursor-pointer hover:scale-105">
+              <div className="p-6 text-center">
+                <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-pink-500 flex items-center justify-center">
+                  <FolderOpen className="h-6 w-6 text-white" />
+                </div>
+                <h3 className="font-semibold text-pink-900 dark:text-pink-100 mb-2">Projects</h3>
+                <p className="text-sm text-pink-600 dark:text-pink-300">Portfolio & side projects</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Recent Activity */}
         {resumes.length > 0 && (
           <div className="mb-12">
@@ -172,11 +233,6 @@ export default function DashboardPage() {
                               }`}>
                                 {resume.template}
                               </span>
-                              {resume.id.startsWith('demo-') && (
-                                <span className="px-2 py-1 rounded-full text-xs font-medium bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300">
-                                  Demo
-                                </span>
-                              )}
                             </div>
                           </div>
                         </div>
@@ -261,11 +317,6 @@ export default function DashboardPage() {
                         }`}>
                           {resume.template}
                         </span>
-                        {resume.id.startsWith('demo-') && (
-                          <span className="px-3 py-1 rounded-full text-xs font-medium bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300">
-                            Demo
-                          </span>
-                        )}
                       </div>
                     </div>
                     <Button

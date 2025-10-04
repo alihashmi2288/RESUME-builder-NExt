@@ -28,25 +28,25 @@ export default function ResumeSettingsComponent({ settings, onSettingsChange }: 
         </CardHeader>
         <CardContent className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Primary Color
             </label>
             <input
               type="color"
               value={settings.colors.primary}
               onChange={(e) => updateColors('primary', e.target.value)}
-              className="w-full h-10 rounded border border-gray-300"
+              className="w-full h-10 rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Secondary Color
             </label>
             <input
               type="color"
               value={settings.colors.secondary}
               onChange={(e) => updateColors('secondary', e.target.value)}
-              className="w-full h-10 rounded border border-gray-300"
+              className="w-full h-10 rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800"
             />
           </div>
         </CardContent>
@@ -58,7 +58,7 @@ export default function ResumeSettingsComponent({ settings, onSettingsChange }: 
         </CardHeader>
         <CardContent className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Font Family
             </label>
             <select
@@ -67,7 +67,7 @@ export default function ResumeSettingsComponent({ settings, onSettingsChange }: 
                 ...settings,
                 fonts: { heading: e.target.value, body: e.target.value }
               })}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="Inter">Inter</option>
               <option value="Arial">Arial</option>
@@ -84,13 +84,13 @@ export default function ResumeSettingsComponent({ settings, onSettingsChange }: 
         </CardHeader>
         <CardContent>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Spacing
             </label>
             <select
               value={settings.spacing}
               onChange={(e) => updateSettings('spacing', e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="compact">Compact</option>
               <option value="normal">Normal</option>

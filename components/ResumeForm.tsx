@@ -162,8 +162,8 @@ export default function ResumeForm({ resumeData, onDataChange }: ResumeFormProps
               onClick={() => setActiveSection(section.id)}
               className={`flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                 activeSection === section.id
-                  ? 'bg-blue-100 text-blue-700 border border-blue-200'
-                  : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100 border border-transparent'
+                  ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-600'
+                  : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700/50 border border-transparent'
               }`}
             >
               <Icon className="h-4 w-4" />
@@ -176,7 +176,7 @@ export default function ResumeForm({ resumeData, onDataChange }: ResumeFormProps
       {/* Personal Information */}
       {activeSection === 'personal' && (
         <div className="space-y-4">
-          <h3 className="text-lg font-semibold text-gray-900">Personal Information</h3>
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Personal Information</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <input
               type="text"
@@ -235,7 +235,7 @@ export default function ResumeForm({ resumeData, onDataChange }: ResumeFormProps
       {activeSection === 'experience' && (
         <div className="space-y-4">
           <div className="flex justify-between items-center">
-            <h3 className="text-lg font-semibold text-gray-900">Work Experience</h3>
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Work Experience</h3>
             <button onClick={addExperience} className="btn-primary">
               <Plus className="h-4 w-4 inline mr-1" />
               Add Experience
@@ -244,10 +244,10 @@ export default function ResumeForm({ resumeData, onDataChange }: ResumeFormProps
           {resumeData.experience.map((exp) => (
             <div key={exp.id} className="resume-section">
               <div className="flex justify-between items-start mb-4">
-                <h4 className="font-medium text-gray-900">Experience Entry</h4>
+                <h4 className="font-medium text-gray-900 dark:text-white">Experience Entry</h4>
                 <button
                   onClick={() => removeExperience(exp.id)}
-                  className="text-red-600 hover:text-red-800"
+                  className="btn-danger"
                 >
                   <Trash2 className="h-4 w-4" />
                 </button>
@@ -274,7 +274,7 @@ export default function ResumeForm({ resumeData, onDataChange }: ResumeFormProps
                   onChange={(e) => updateExperience(exp.id, 'startDate', e.target.value)}
                   className="input-field"
                 />
-                <div className="flex items-center space-x-2">
+                <div className="flex flex-col space-y-2">
                   <input
                     type="month"
                     placeholder="End Date"
@@ -283,14 +283,14 @@ export default function ResumeForm({ resumeData, onDataChange }: ResumeFormProps
                     className="input-field"
                     disabled={exp.current}
                   />
-                  <label className="flex items-center">
+                  <label className="flex items-center text-sm">
                     <input
                       type="checkbox"
                       checked={exp.current}
                       onChange={(e) => updateExperience(exp.id, 'current', e.target.checked)}
                       className="mr-2"
                     />
-                    Current
+                    <span className="text-gray-700 dark:text-gray-300">Currently working here</span>
                   </label>
                 </div>
               </div>
@@ -310,7 +310,7 @@ export default function ResumeForm({ resumeData, onDataChange }: ResumeFormProps
       {activeSection === 'education' && (
         <div className="space-y-4">
           <div className="flex justify-between items-center">
-            <h3 className="text-lg font-semibold text-gray-900">Education</h3>
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Education</h3>
             <button onClick={addEducation} className="btn-primary">
               <Plus className="h-4 w-4 inline mr-1" />
               Add Education
@@ -319,10 +319,10 @@ export default function ResumeForm({ resumeData, onDataChange }: ResumeFormProps
           {resumeData.education.map((edu) => (
             <div key={edu.id} className="resume-section">
               <div className="flex justify-between items-start mb-4">
-                <h4 className="font-medium text-gray-900">Education Entry</h4>
+                <h4 className="font-medium text-gray-900 dark:text-white">Education Entry</h4>
                 <button
                   onClick={() => removeEducation(edu.id)}
-                  className="text-red-600 hover:text-red-800"
+                  className="btn-danger"
                 >
                   <Trash2 className="h-4 w-4" />
                 </button>
@@ -380,7 +380,7 @@ export default function ResumeForm({ resumeData, onDataChange }: ResumeFormProps
       {activeSection === 'skills' && (
         <div className="space-y-4">
           <div className="flex justify-between items-center">
-            <h3 className="text-lg font-semibold text-gray-900">Skills</h3>
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Skills</h3>
             <button onClick={addSkill} className="btn-primary">
               <Plus className="h-4 w-4 inline mr-1" />
               Add Skill
@@ -408,7 +408,7 @@ export default function ResumeForm({ resumeData, onDataChange }: ResumeFormProps
                 </select>
                 <button
                   onClick={() => removeSkill(skill.id)}
-                  className="text-red-600 hover:text-red-800"
+                  className="btn-danger"
                 >
                   <Trash2 className="h-4 w-4" />
                 </button>
@@ -422,7 +422,7 @@ export default function ResumeForm({ resumeData, onDataChange }: ResumeFormProps
       {activeSection === 'projects' && (
         <div className="space-y-4">
           <div className="flex justify-between items-center">
-            <h3 className="text-lg font-semibold text-gray-900">Projects</h3>
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Projects</h3>
             <button onClick={addProject} className="btn-primary">
               <Plus className="h-4 w-4 inline mr-1" />
               Add Project
@@ -431,10 +431,10 @@ export default function ResumeForm({ resumeData, onDataChange }: ResumeFormProps
           {resumeData.projects.map((project) => (
             <div key={project.id} className="resume-section">
               <div className="flex justify-between items-start mb-4">
-                <h4 className="font-medium text-gray-900">Project Entry</h4>
+                <h4 className="font-medium text-gray-900 dark:text-white">Project Entry</h4>
                 <button
                   onClick={() => removeProject(project.id)}
-                  className="text-red-600 hover:text-red-800"
+                  className="btn-danger"
                 >
                   <Trash2 className="h-4 w-4" />
                 </button>
