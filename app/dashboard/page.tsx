@@ -68,10 +68,12 @@ export default function DashboardPage() {
                 <Crown className="h-4 w-4 mr-2" />
                 Upgrade to Pro
               </Button>
-              <Button onClick={() => window.location.href = '/templates'} className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg">
-                <Plus className="h-4 w-4 mr-2" />
-                New Resume
-              </Button>
+              <Link href="/templates">
+                <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg">
+                  <Plus className="h-4 w-4 mr-2" />
+                  New Resume
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -116,18 +118,20 @@ export default function DashboardPage() {
               <p className="text-xs text-purple-200">Job application success</p>
             </CardContent>
           </Card>
-          <Card className="bg-gradient-to-br from-orange-500 to-orange-600 text-white border-0 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 cursor-pointer" onClick={() => window.location.href = '/templates'}>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
-              <CardTitle className="text-sm font-medium text-orange-100">Quick Actions</CardTitle>
-              <div className="p-2 bg-white/20 rounded-lg">
-                <Plus className="h-5 w-5 text-white" />
-              </div>
-            </CardHeader>
-            <CardContent>
-              <div className="text-lg font-bold mb-2">Browse Templates</div>
-              <p className="text-xs text-orange-200">Click to explore 9 templates</p>
-            </CardContent>
-          </Card>
+          <Link href="/templates">
+            <Card className="bg-gradient-to-br from-orange-500 to-orange-600 text-white border-0 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 cursor-pointer">
+              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
+                <CardTitle className="text-sm font-medium text-orange-100">Quick Actions</CardTitle>
+                <div className="p-2 bg-white/20 rounded-lg">
+                  <Plus className="h-5 w-5 text-white" />
+                </div>
+              </CardHeader>
+              <CardContent>
+                <div className="text-lg font-bold mb-2">Browse Templates</div>
+                <p className="text-xs text-orange-200">Click to explore 9 templates</p>
+              </CardContent>
+            </Card>
+          </Link>
         </div>
 
         {/* Resume Sections Navigation */}
@@ -207,45 +211,47 @@ export default function DashboardPage() {
                     .sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime())
                     .slice(0, 3)
                     .map((resume) => (
-                      <div key={resume.id} className="flex items-center justify-between p-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors cursor-pointer" onClick={() => window.location.href = `/editor/${resume.id}`}>
-                        <div className="flex items-center space-x-4">
-                          <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
-                            resume.template === 'modern' ? 'bg-blue-100 dark:bg-blue-900/30' :
-                            resume.template === 'executive' ? 'bg-gray-100 dark:bg-gray-700' :
-                            resume.template === 'creative' ? 'bg-orange-100 dark:bg-orange-900/30' :
-                            'bg-purple-100 dark:bg-purple-900/30'
-                          }`}>
-                            <FileText className={`h-6 w-6 ${
-                              resume.template === 'modern' ? 'text-blue-600 dark:text-blue-400' :
-                              resume.template === 'executive' ? 'text-gray-600 dark:text-gray-400' :
-                              resume.template === 'creative' ? 'text-orange-600 dark:text-orange-400' :
-                              'text-purple-600 dark:text-purple-400'
-                            }`} />
-                          </div>
-                          <div>
-                            <p className="font-semibold text-gray-900 dark:text-white">{resume.title}</p>
-                            <div className="flex items-center space-x-2 mt-1">
-                              <span className={`px-2 py-1 rounded-full text-xs font-medium capitalize ${
-                                resume.template === 'modern' ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300' :
-                                resume.template === 'executive' ? 'bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300' :
-                                resume.template === 'creative' ? 'bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300' :
-                                'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300'
-                              }`}>
-                                {resume.template}
-                              </span>
+                      <Link key={resume.id} href={`/editor/${resume.id}`}>
+                        <div className="flex items-center justify-between p-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors cursor-pointer">
+                          <div className="flex items-center space-x-4">
+                            <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
+                              resume.template === 'modern' ? 'bg-blue-100 dark:bg-blue-900/30' :
+                              resume.template === 'executive' ? 'bg-gray-100 dark:bg-gray-700' :
+                              resume.template === 'creative' ? 'bg-orange-100 dark:bg-orange-900/30' :
+                              'bg-purple-100 dark:bg-purple-900/30'
+                            }`}>
+                              <FileText className={`h-6 w-6 ${
+                                resume.template === 'modern' ? 'text-blue-600 dark:text-blue-400' :
+                                resume.template === 'executive' ? 'text-gray-600 dark:text-gray-400' :
+                                resume.template === 'creative' ? 'text-orange-600 dark:text-orange-400' :
+                                'text-purple-600 dark:text-purple-400'
+                              }`} />
+                            </div>
+                            <div>
+                              <p className="font-semibold text-gray-900 dark:text-white">{resume.title}</p>
+                              <div className="flex items-center space-x-2 mt-1">
+                                <span className={`px-2 py-1 rounded-full text-xs font-medium capitalize ${
+                                  resume.template === 'modern' ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300' :
+                                  resume.template === 'executive' ? 'bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300' :
+                                  resume.template === 'creative' ? 'bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300' :
+                                  'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300'
+                                }`}>
+                                  {resume.template}
+                                </span>
+                              </div>
                             </div>
                           </div>
+                          <div className="text-right">
+                            <p className="text-sm text-gray-500 dark:text-gray-400">
+                              {new Date(resume.updatedAt).toLocaleDateString()}
+                            </p>
+                            <Button size="sm" variant="ghost" className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 mt-1">
+                              <Edit className="h-4 w-4 mr-1" />
+                              Edit
+                            </Button>
+                          </div>
                         </div>
-                        <div className="text-right">
-                          <p className="text-sm text-gray-500 dark:text-gray-400">
-                            {new Date(resume.updatedAt).toLocaleDateString()}
-                          </p>
-                          <Button size="sm" variant="ghost" className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 mt-1">
-                            <Edit className="h-4 w-4 mr-1" />
-                            Edit
-                          </Button>
-                        </div>
-                      </div>
+                      </Link>
                     ))
                   }
                 </div>
@@ -260,21 +266,20 @@ export default function DashboardPage() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-            <Card 
-              className="border-2 border-dashed border-gray-300 dark:border-gray-600 hover:border-purple-400 dark:hover:border-purple-500 cursor-pointer transition-all duration-300 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm hover:shadow-xl"
-              onClick={() => window.location.href = '/templates'}
-            >
-              <CardContent className="flex flex-col items-center justify-center h-64 text-center p-8">
-                <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6">
-                  <Plus className="h-8 w-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Create New Resume</h3>
-                <p className="text-gray-600 dark:text-gray-400 mb-4">Choose from 9 professional templates</p>
-                <Button size="sm" className="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
-                  Get Started
-                </Button>
-              </CardContent>
-            </Card>
+            <Link href="/templates">
+              <Card className="border-2 border-dashed border-gray-300 dark:border-gray-600 hover:border-purple-400 dark:hover:border-purple-500 cursor-pointer transition-all duration-300 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm hover:shadow-xl">
+                <CardContent className="flex flex-col items-center justify-center h-64 text-center p-8">
+                  <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6">
+                    <Plus className="h-8 w-8 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Create New Resume</h3>
+                  <p className="text-gray-600 dark:text-gray-400 mb-4">Choose from 9 professional templates</p>
+                  <Button size="sm" className="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+                    Get Started
+                  </Button>
+                </CardContent>
+              </Card>
+            </Link>
           </motion.div>
 
           {resumes.map((resume, index) => (
@@ -285,7 +290,8 @@ export default function DashboardPage() {
               transition={{ duration: 0.3, delay: index * 0.1 }}
               whileHover={{ scale: 1.02 }}
             >
-              <Card className="hover:shadow-2xl transition-all duration-300 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-lg cursor-pointer group" onClick={() => window.location.href = `/editor/${resume.id}`}>
+              <Link href={`/editor/${resume.id}`}>
+                <Card className="hover:shadow-2xl transition-all duration-300 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-lg cursor-pointer group">
                 <CardHeader className="pb-4">
                   <div className="flex justify-between items-start">
                     <div className="flex-1">
@@ -344,7 +350,8 @@ export default function DashboardPage() {
                     </Button>
                   </div>
                 </CardContent>
-              </Card>
+                </Card>
+              </Link>
             </motion.div>
           ))}
         </div>
