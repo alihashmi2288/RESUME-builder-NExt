@@ -39,7 +39,7 @@ export default function Home() {
                 <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
                   Resume Builder Pro
                 </h1>
-                <p className="text-xs text-muted-foreground">Professional Resume Creator by Ali Hashmi</p>
+                <p className="text-xs text-muted-foreground">Professional Resume Builder Created by Ali Hashmi</p>
               </div>
             </motion.div>
             
